@@ -7,7 +7,7 @@ local function tablelength(T)
   end
 
   --this function transforms the text in the autocomplete suggestions (we add the emote image here)
-function TwitchEmotes_Blasphemy_RenderSuggestion(text)
+function TwitchEmotes_Moosebrother_RenderSuggestion(text)
     local fullEmotePath = TwitchEmotes_Moosebrother_Emoticons_Pack[text];
     if (not fullEmotePath) then
        fullEmotePath = TwitchEmotes_defaultpack[text]
@@ -24,7 +24,7 @@ function TwitchEmotes_Blasphemy_RenderSuggestion(text)
     end
 end
 
-function TwitchEmotes_Blasphemy:SetAutoComplete(value)
+function TwitchEmotes_Moosebrother:SetAutoComplete(value)
     if value and not autocompleteInited then
         local i = tablelength(AllTwitchEmoteNames);
         for k, _ in pairs(TwitchEmotes_Moosebrother_Emoticons_Pack) do
@@ -51,7 +51,7 @@ function TwitchEmotes_Blasphemy:SetAutoComplete(value)
                 onSuggestionApplied = function(suggestion)
                     --UpdateEmoteStats(suggestion, true, false, false);
                 end,
-                renderSuggestionFN = TwitchEmotes_Blasphemy_RenderSuggestion,
+                renderSuggestionFN = TwitchEmotes_Moosebrother_RenderSuggestion,
                 suggestionBiasFN = function(suggestion, text)
                     ----Bias the sorting function towards the most autocompleted emotes
                     --if TwitchEmoteStatistics[suggestion] ~= nil then

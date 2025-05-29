@@ -4,7 +4,7 @@
 ## Version: 1.0.0
 ## Dependency: TwitchEmotes
 ## OptionalDeps: Ace3
-## IconTexture: Interface\AddOns\TwitchEmotes_Blasphemy\emotes\mbroPopcorn.tga
+## IconTexture: Interface\AddOns\TwitchEmotes_Moosebrother\emotes\mbroPopcorn.tga
 
 #@no-lib-strip@
 libs\AceConfig-3.0\AceConfig-3.0.xml

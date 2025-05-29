@@ -1,4 +1,4 @@
-# Blasphemy Twitch Emotes - Submission guide (Yes, it's french)
+# Moosebrother Twitch Emotes - Submission guide (Yes, it's french)
 
 
 1. Cloner le repository localement et créer une branche
