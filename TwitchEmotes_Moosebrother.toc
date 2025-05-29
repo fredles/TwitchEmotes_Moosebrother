@@ -1,10 +1,10 @@
-## Interface: 110007
+## Interface: 110005
 ## Title: TwitchEmotes_Moosebrother
 ## Author: Fredles
 ## Version: 1.0.0
 ## Dependency: TwitchEmotes
 ## OptionalDeps: Ace3
-## IconTexture: Interface\AddOns\TwitchEmotes_Blasphemy\emotes\OursGarou.tga
+## IconTexture: Interface\AddOns\TwitchEmotes_Blasphemy\emotes\mbroPopcorn.tga
 
 #@no-lib-strip@
 libs\AceConfig-3.0\AceConfig-3.0.xml
