@@ -60,6 +60,9 @@ TwitchEmotes_Moosebrother_Emoticons = {
     ["mbroWiggle"] = "mbroWiggle",
     ["mbroWOW"] = "mbroWOW",
     ["mbroWWICKED"] = "mbroWWICKED",
+    ["POGWAN"] = "POGWAN",
+    ["WAGWANMB"] = "WAGWANMB",
+    ["mbroWaiting"] = "mbroWaiting",
 }
 
 TwitchEmotes_Moosebrother_Emoticons_Pack = {
@@ -124,4 +127,7 @@ TwitchEmotes_Moosebrother_Emoticons_Pack = {
     ["mbroWiggle"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroWiggle.tga:28:28",
     ["mbroWOW"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroWOW.tga:28:28",
     ["mbroWWICKED"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroWWICKED.tga:28:28",
+    ["POGWAN"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\POGWAN.tga:28:28",
+    ["WAGWANMB"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\WAGWANMB.tga:28:28",
+    ["mbroWaiting"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroWaiting.tga:28:28",
 }
