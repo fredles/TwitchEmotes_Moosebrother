@@ -26,13 +26,16 @@ if _orig_UpdateEmoteInFontString then
         local animdata = TwitchEmotes_animation_metadata and TwitchEmotes_animation_metadata[imagepath]
         if animdata then
           local framenum = TwitchEmotes_GetCurrentFrameNum(animdata)
-          local nTxt
+          -- Escape Lua pattern magic in the matched texture string so we can replace it literally
+          local safePattern = emoteTextureString:gsub("([%^%$%(%)%%%._%[%]%*%+%-%?])", "%%%1")
+          local replacement
           if widthOverride or heightOverride then
-            nTxt = txt:gsub("%+", "%%+"):gsub("%-", "%%-")
-            nTxt = nTxt:gsub(emoteTextureString:gsub("%+","%%+"):gsub("%-","%%-"), TwitchEmotes_BuildEmoteFrameStringWithDimensions(imagepath, animdata, framenum, widthOverride or animdata.frameWidth, heightOverride or animdata.frameHeight))
+            replacement = TwitchEmotes_BuildEmoteFrameStringWithDimensions(imagepath, animdata, framenum, widthOverride or animdata.frameWidth, heightOverride or animdata.frameHeight)
           else
-            nTxt = txt:gsub(emoteTextureString:gsub("%+","%%+"):gsub("%-","%%-"), TwitchEmotes_BuildEmoteFrameString(imagepath, animdata, framenum))
+            replacement = TwitchEmotes_BuildEmoteFrameString(imagepath, animdata, framenum)
           end
+          -- Replace only this occurrence to avoid reprocessing already-updated segments
+          local nTxt = txt:gsub(safePattern, replacement, 1)
           if fontstring.messageInfo then
             fontstring.messageInfo.message = nTxt
           end
