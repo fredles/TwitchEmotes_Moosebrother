@@ -1,0 +1,24 @@
+package-as: TwitchEmotes_Moosebrother
+enable-nolib-creation: yes
+
+# Ignore dev-only folders and source assets in release zips
+ignore:
+  - .git
+  - .github
+  - .vscode
+  - .gitignore
+  - tools
+  - Emojis
+  - libs/.git
+  - '**/*.psd'
+  - '**/*.png'
+  - '**/*.gif'
+  - '**/*.avif'
+  - '**/*.ps1'
+  - '**/*.sh'
+  - '**/*.bat'
+
+# Notes:
+# - The #@no-lib-strip@ markers in your TOC work with enable-nolib-creation to produce both normal and -nolib zips.
+# - If you link this repo to CurseForge/WowAce packager, .pkgmeta will be used during packaging.
+# - For manual uploads, create your zip excluding the same paths.
