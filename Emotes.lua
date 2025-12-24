@@ -1,5 +1,5 @@
 TwitchEmotes_Moosebrother_Emoticons = {
-    ["GLUE"] = "GLUE",
+    ["AAAA"] = "AAAA",
     ["mbroA"] = "mbroA",
     ["mbroAFK"] = "mbroAFK",
     ["mbroBloompa"] = "mbroBloompa",
@@ -66,11 +66,11 @@ TwitchEmotes_Moosebrother_Emoticons = {
     ["WAGWANMB"] = "WAGWANMB",
     ["mbroWaiting"] = "mbroWaiting",
     ["Zara"] = "Zara",
-    ["zara"] = "zara"
+    ["zara"] = "zara",
 }
 
 TwitchEmotes_Moosebrother_Emoticons_Pack = {
-    ["GLUE"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\GLUE.tga:32:32",
+    ["AAAA"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\AAAA.tga",
     ["mbroA"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroA.tga:28:28",
     ["mbroAFK"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroAFK.tga:28:28",
     ["mbroBloompa"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroBloompa.tga:28:28",
@@ -136,12 +136,40 @@ TwitchEmotes_Moosebrother_Emoticons_Pack = {
     ["POGWAN"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\POGWAN.tga:28:28",
     ["WAGWANMB"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\WAGWANMB.tga:28:28",
     ["mbroWaiting"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroWaiting.tga:28:28",
-    ["Zara"] = "Interface\\AddOns\\TwitchEmotes\\Emotes\\Custom\\meow.tga:28:28",
-    ["zara"] = "Interface\\AddOns\\TwitchEmotes\\Emotes\\Custom\\meow.tga:28:28",
-
+    ["Zara"] = "Interface\\AddOns\\TwitchEmotes\\Emotes\\Custom\\meow.tga",
+    ["zara"] = "Interface\\AddOns\\TwitchEmotes\\Emotes\\Custom\\meow.tga",
 }
 
--- Register animation metadata for animated Moosebrother emotes.
--- Keep this in sync with the spritesheets generated under /emotes.
--- glue.tga was generated as a vertical strip of 64 frames, each 32x32, total image height 2048, 15 fps
-    TwitchEmotesMoosebrother_AddAnimation("Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\GLUE.tga", 64, 32, 32, 32, 2048, 15)
+--[[
+    Animation Metadata Table
+    
+    For each animated emote, define:
+    - nFrames: Number of frames in the sprite sheet
+    - frameWidth: Width of each frame (always 32)
+    - frameHeight: Height of each frame (always 32)
+    - imageWidth: Total image width (always 32)
+    - imageHeight: Total image height (must be power of 2: 64, 128, 256, 512, 1024, 2048)
+    - framerate: Playback speed in frames per second
+    - pingpong: (optional) If true, animation plays forward then backward
+    
+    See Animator.lua for detailed instructions on creating animated emotes.
+]]
+TwitchEmotes_Moosebrother_Animation_Metadata = {
+    ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\AAAA.tga"] = {
+        nFrames = 7,
+        frameWidth = 32,
+        frameHeight = 32,
+        imageWidth = 32,
+        imageHeight = 256,
+        framerate = 30,
+    },
+    -- Example:
+    -- ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\example.tga"] = {
+    --     nFrames = 24,
+    --     frameWidth = 32,
+    --     frameHeight = 32,
+    --     imageWidth = 32,
+    --     imageHeight = 1024,
+    --     framerate = 15,
+    -- },
+}
