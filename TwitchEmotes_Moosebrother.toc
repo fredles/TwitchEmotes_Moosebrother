@@ -10,7 +10,8 @@
 libs\AceConfig-3.0\AceConfig-3.0.xml
 #@end-no-lib-strip@
 
-Core.lua
 Emotes.lua
+Animator.lua
+Core.lua
 Init_Emotes.lua
 Helpers.lua

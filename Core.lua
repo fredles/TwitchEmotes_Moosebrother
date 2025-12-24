@@ -7,5 +7,8 @@ TwitchEmotes_Moosebrother = LibStub("AceAddon-3.0"):NewAddon("TwitchEmotes_Moose
 function TwitchEmotes_Moosebrother:OnInitialize()
 
     TwitchEmotes_Moosebrother:SetAutoComplete(true)
+    
+    -- Initialize the animation system for animated emotes
+    TwitchEmotes_Moosebrother_InitAnimator()
 
 end
