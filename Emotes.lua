@@ -1,5 +1,4 @@
 TwitchEmotes_Moosebrother_Emoticons = {
-    ["GLUE"] = "GLUE",
     ["mbroA"] = "mbroA",
     ["mbroAFK"] = "mbroAFK",
     ["mbroBloompa"] = "mbroBloompa",
@@ -70,7 +69,6 @@ TwitchEmotes_Moosebrother_Emoticons = {
 }
 
 TwitchEmotes_Moosebrother_Emoticons_Pack = {
-    ["GLUE"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\GLUE.tga:32:32",
     ["mbroA"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroA.tga:28:28",
     ["mbroAFK"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroAFK.tga:28:28",
     ["mbroBloompa"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroBloompa.tga:28:28",
@@ -140,8 +138,3 @@ TwitchEmotes_Moosebrother_Emoticons_Pack = {
     ["zara"] = "Interface\\AddOns\\TwitchEmotes\\Emotes\\Custom\\meow.tga:28:28",
 
 }
-
--- Register animation metadata for animated Moosebrother emotes.
--- Keep this in sync with the spritesheets generated under /emotes.
--- glue.tga was generated as a vertical strip of 64 frames, each 32x32, total image height 2048, 15 fps
-    TwitchEmotesMoosebrother_AddAnimation("Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\GLUE.tga", 64, 32, 32, 32, 2048, 15)

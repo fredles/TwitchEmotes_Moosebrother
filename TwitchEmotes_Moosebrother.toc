@@ -14,4 +14,3 @@ Core.lua
 Emotes.lua
 Init_Emotes.lua
 Helpers.lua
-Animator.lua
