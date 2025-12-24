@@ -1,5 +1,6 @@
 TwitchEmotes_Moosebrother_Emoticons = {
     ["AAAA"] = "AAAA",
+    ["HotBois"] = "HotBois",
     ["mbroA"] = "mbroA",
     ["mbroAFK"] = "mbroAFK",
     ["mbroBloompa"] = "mbroBloompa",
@@ -63,6 +64,7 @@ TwitchEmotes_Moosebrother_Emoticons = {
     ["mbroWOW"] = "mbroWOW",
     ["mbroWWICKED"] = "mbroWWICKED",
     ["POGWAN"] = "POGWAN",
+    ["poggSpin"] = "poggSpin",
     ["WAGWANMB"] = "WAGWANMB",
     ["mbroWaiting"] = "mbroWaiting",
     ["Zara"] = "Zara",
@@ -71,11 +73,12 @@ TwitchEmotes_Moosebrother_Emoticons = {
 
 TwitchEmotes_Moosebrother_Emoticons_Pack = {
     ["AAAA"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\AAAA.tga",
+    ["HotBois"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\HotBois.tga",
     ["mbroA"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroA.tga:28:28",
     ["mbroAFK"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroAFK.tga:28:28",
     ["mbroBloompa"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroBloompa.tga:28:28",
     ["mbroBuffer"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroBuffer.tga:28:28",
-    ["mbroChomp"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroChomp.tga:28:28",
+    ["mbroChomp"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroChomp.tga",
     ["mbroClassic"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroClassic.tga:28:28",
     ["mbroCozy"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroCozy.tga:28:28",
     ["mbroCringe"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroCringe.tga:28:28",
@@ -111,7 +114,7 @@ TwitchEmotes_Moosebrother_Emoticons_Pack = {
     ["mbroR"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroR.tga:28:28",
     ["mbroRare"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroRare.tga:28:28",
     ["mbroRIP"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroRIP.tga:28:28",
-    ["mbroRun"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroRun.tga:28:28",
+    ["mbroRun"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroRun.tga",
     ["mbroS"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroS.tga:28:28",
     ["mbroS1"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroS1.tga:28:28",
     ["mbroS2"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroS2.tga:28:28",
@@ -134,6 +137,7 @@ TwitchEmotes_Moosebrother_Emoticons_Pack = {
     ["mbroWOW"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroWOW.tga:28:28",
     ["mbroWWICKED"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroWWICKED.tga:28:28",
     ["POGWAN"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\POGWAN.tga:28:28",
+    ["poggSpin"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\poggSpin.tga",
     ["WAGWANMB"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\WAGWANMB.tga:28:28",
     ["mbroWaiting"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroWaiting.tga:28:28",
     ["Zara"] = "Interface\\AddOns\\TwitchEmotes\\Emotes\\Custom\\meow.tga",
@@ -155,14 +159,11 @@ TwitchEmotes_Moosebrother_Emoticons_Pack = {
     See Animator.lua for detailed instructions on creating animated emotes.
 ]]
 TwitchEmotes_Moosebrother_Animation_Metadata = {
-    ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\AAAA.tga"] = {
-        nFrames = 7,
-        frameWidth = 32,
-        frameHeight = 32,
-        imageWidth = 32,
-        imageHeight = 256,
-        framerate = 30,
-    },
+    ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\AAAA.tga"] = {nFrames = 7, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 256, framerate = 30},
+    ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\HotBois.tga"] = {nFrames = 19, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 1024, framerate = 15},
+    ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroChomp.tga"] = {nFrames = 6, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 256, framerate = 15},
+    ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroRun.tga"] = {nFrames = 15, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 512, framerate = 15},
+    ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\poggSpin.tga"] = {nFrames = 6, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 256, framerate = 15},
     -- Example:
     -- ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\example.tga"] = {
     --     nFrames = 24,
