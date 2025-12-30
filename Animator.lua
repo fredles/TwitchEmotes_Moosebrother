@@ -31,15 +31,29 @@
        b) Add to TwitchEmotes_Moosebrother_Emoticons_Pack (NO :28:28 suffix for animated!):
           ["mbroMeow"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroMeow.tga",
        
-       c) Add to TwitchEmotes_Moosebrother_Animation_Metadata:
-          ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroMeow.tga"] = {
-              nFrames = 24,      -- number of frames in the sprite sheet
-              frameWidth = 32,   -- width of each frame (always 32)
-              frameHeight = 32,  -- height of each frame (always 32)
-              imageWidth = 32,   -- total image width (always 32)
-              imageHeight = 1024, -- total image height (must be power of 2)
-              framerate = 15     -- playback speed in frames per second
-          },
+        c) Add to TwitchEmotes_Moosebrother_Animation_Metadata:
+           ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroMeow.tga"] = {
+               nFrames = 24,      -- number of frames in the sprite sheet
+               frameWidth = 32,   -- width of each frame in pixels
+               frameHeight = 32,  -- height of each frame in pixels
+               imageWidth = 32,   -- total image width (power of 2 >= frameWidth)
+               imageHeight = 1024, -- total image height (power of 2 >= nFrames * frameHeight)
+               framerate = 15     -- playback speed in frames per second
+           },
+    
+    NON-SQUARE EMOTES:
+    For emotes with non-1:1 aspect ratios (e.g., wide emotes), frameWidth and frameHeight
+    can differ. The display will automatically scale to preserve aspect ratio.
+    
+    Example for a 3:1 aspect ratio emote (96x32 frames):
+       ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\wideEmote.tga"] = {
+           nFrames = 36,
+           frameWidth = 96,    -- wider than tall
+           frameHeight = 32,
+           imageWidth = 128,   -- next power of 2 >= 96
+           imageHeight = 2048, -- next power of 2 >= 36 * 32
+           framerate = 15
+       },
     
     ============================================================================
     SPRITE SHEET FORMAT:
@@ -119,9 +133,10 @@ end
     @return left, right, top, bottom texture coordinates (0-1 range)
 ]]
 function TwitchEmotes_Moosebrother_GetTexCoordsForFrame(animdata, framenum)
+    local right = animdata.frameWidth / animdata.imageWidth
     local top = (framenum * animdata.frameHeight) / animdata.imageHeight
     local bottom = ((framenum + 1) * animdata.frameHeight) / animdata.imageHeight
-    return 0, 1, top, bottom
+    return 0, right, top, bottom
 end
 
 --[[
@@ -139,8 +154,9 @@ function TwitchEmotes_Moosebrother_BuildEmoteFrameString(imagepath, animdata, fr
     local displayWidth = width or animdata.frameWidth
     local displayHeight = height or animdata.frameHeight
     
-    -- Format: |Tpath:displayW:displayH:offsetX:offsetY:texW:texH:left:right:top:bottom|t
-    return "|T" .. imagepath .. ":" .. displayWidth .. ":" .. displayHeight 
+    -- Format: |Tpath:height:width:offsetX:offsetY:texW:texH:left:right:top:bottom|t
+    -- Note: WoW uses height:width order, not width:height
+    return "|T" .. imagepath .. ":" .. displayHeight .. ":" .. displayWidth 
            .. ":0:0:" .. animdata.imageWidth .. ":" .. animdata.imageHeight 
            .. ":0:" .. animdata.frameWidth .. ":" .. top .. ":" .. bottom .. "|t"
 end
@@ -169,10 +185,21 @@ function TwitchEmotes_Moosebrother_UpdateEmoteInFontString(fontstring, widthOver
                            TwitchEmotes_Moosebrother_Animation_Metadata[imagepath]
             
             if animdata then
+                -- Calculate display dimensions preserving aspect ratio
+                local baseHeight = heightOverride or 28
+                local displayHeight = baseHeight
+                local displayWidth
+                if widthOverride then
+                    displayWidth = widthOverride
+                else
+                    local aspectRatio = animdata.frameWidth / animdata.frameHeight
+                    displayWidth = math.floor(baseHeight * aspectRatio)
+                end
+                
                 -- Calculate current frame and build new texture string
                 local framenum = TwitchEmotes_Moosebrother_GetCurrentFrameNum(animdata)
                 local newTextureString = TwitchEmotes_Moosebrother_BuildEmoteFrameString(
-                    imagepath, animdata, framenum, widthOverride, heightOverride
+                    imagepath, animdata, framenum, displayWidth, displayHeight
                 )
                 
                 -- Replace the old texture string with the new one
@@ -213,7 +240,7 @@ function TwitchEmotes_Moosebrother_Animator_OnUpdate(self, elapsed)
             if frame and frame:IsShown() and frame.visibleLines then
                 for _, visibleLine in ipairs(frame.visibleLines) do
                     -- Skip lines being hovered (handled separately by parent addon if needed)
-                    TwitchEmotes_Moosebrother_UpdateEmoteInFontString(visibleLine, 28, 28)
+                    TwitchEmotes_Moosebrother_UpdateEmoteInFontString(visibleLine, nil, nil)
                 end
             end
         end
@@ -226,7 +253,7 @@ function TwitchEmotes_Moosebrother_Animator_OnUpdate(self, elapsed)
             local btn = EditBoxAutoComplete_GetAutoCompleteButton and 
                        EditBoxAutoComplete_GetAutoCompleteButton(i)
             if btn and btn:IsVisible() then
-                TwitchEmotes_Moosebrother_UpdateEmoteInFontString(btn, 16, 16)
+                TwitchEmotes_Moosebrother_UpdateEmoteInFontString(btn, nil, 16)
             else
                 break
             end

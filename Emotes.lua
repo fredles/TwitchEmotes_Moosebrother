@@ -1,6 +1,7 @@
 TwitchEmotes_Moosebrother_Emoticons = {
     ["AAAA"] = "AAAA",
     ["HotBois"] = "HotBois",
+    ["Joel"] = "Joel",
     ["mbroA"] = "mbroA",
     ["mbroAFK"] = "mbroAFK",
     ["mbroBloompa"] = "mbroBloompa",
@@ -74,6 +75,7 @@ TwitchEmotes_Moosebrother_Emoticons = {
 TwitchEmotes_Moosebrother_Emoticons_Pack = {
     ["AAAA"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\AAAA.tga",
     ["HotBois"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\HotBois.tga",
+    ["Joel"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\Joel.tga",
     ["mbroA"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroA.tga:28:28",
     ["mbroAFK"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroAFK.tga:28:28",
     ["mbroBloompa"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroBloompa.tga:28:28",
@@ -149,18 +151,22 @@ TwitchEmotes_Moosebrother_Emoticons_Pack = {
     
     For each animated emote, define:
     - nFrames: Number of frames in the sprite sheet
-    - frameWidth: Width of each frame (always 32)
-    - frameHeight: Height of each frame (always 32)
-    - imageWidth: Total image width (always 32)
-    - imageHeight: Total image height (must be power of 2: 64, 128, 256, 512, 1024, 2048)
+    - frameWidth: Width of each frame in pixels
+    - frameHeight: Height of each frame in pixels (typically 32)
+    - imageWidth: Total image width (must be power of 2 >= frameWidth)
+    - imageHeight: Total image height (must be power of 2 >= nFrames * frameHeight)
     - framerate: Playback speed in frames per second
     - pingpong: (optional) If true, animation plays forward then backward
+    
+    For non-square emotes, frameWidth and frameHeight can differ.
+    The display will automatically scale to preserve aspect ratio.
     
     See Animator.lua for detailed instructions on creating animated emotes.
 ]]
 TwitchEmotes_Moosebrother_Animation_Metadata = {
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\AAAA.tga"] = {nFrames = 7, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 256, framerate = 30},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\HotBois.tga"] = {nFrames = 19, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 1024, framerate = 15},
+    ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\Joel.tga"] = {nFrames = 36, frameWidth = 96, frameHeight = 32, imageWidth = 128, imageHeight = 2048, framerate = 15},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroChomp.tga"] = {nFrames = 6, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 256, framerate = 15},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroRun.tga"] = {nFrames = 15, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 512, framerate = 15},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\poggSpin.tga"] = {nFrames = 6, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 256, framerate = 15},
