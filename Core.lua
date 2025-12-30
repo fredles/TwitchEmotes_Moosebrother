@@ -8,7 +8,7 @@ function TwitchEmotes_Moosebrother:OnInitialize()
 
     TwitchEmotes_Moosebrother:SetAutoComplete(true)
     
-    -- Initialize the animation system for animated emotes
+    -- Initialize the animation system for animated emotes ()
     TwitchEmotes_Moosebrother_InitAnimator()
 
 end
