@@ -1,7 +1,5 @@
 # Moosebrother Twitch Emotes
 
-A World of Warcraft addon that adds custom Twitch emotes to chat. This is an extension of the TwitchEmotes addon.
-
 ## Submission Guide
 
 ### Static Emotes
