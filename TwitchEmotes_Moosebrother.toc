@@ -1,4 +1,4 @@
-## Interface: 110207
+## Interface: 120000
 ## Title: TwitchEmotes_Moosebrother
 ## Author: Fredles
 ## Version: 1.0.0

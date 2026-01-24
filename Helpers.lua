@@ -37,6 +37,11 @@ end
 
 function TwitchEmotes_Moosebrother:SetAutoComplete(value)
     if value and not autocompleteInited then
+        -- Guard against missing TwitchEmotes globals
+        if not AllTwitchEmoteNames or not SetupAutoComplete then
+            return
+        end
+        
         local i = tablelength(AllTwitchEmoteNames);
         for k, _ in pairs(TwitchEmotes_Moosebrother_Emoticons_Pack) do
             AllTwitchEmoteNames[i] = k;

@@ -83,6 +83,10 @@ local MOOSEBROTHER_T = 0
 local MOOSEBROTHER_TimeSinceLastUpdate = 0
 local MOOSEBROTHER_UPDATE_INTERVAL = 0.033 -- ~30 FPS
 
+-- WoW 12.0+ secret value check (prevents errors on protected UI strings)
+local issecurevariable = issecurevariable or function() return false end
+local issecretvalue = issecretvalue or function() return false end
+
 -- Pattern to match Moosebrother emote textures in chat
 local MOOSEBROTHER_TEXTURE_PATTERN = "(|TInterface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\.-|t)"
 local MOOSEBROTHER_PATH_PATTERN = "|T(Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\.-%.tga).-|t"
@@ -173,6 +177,11 @@ end
 function TwitchEmotes_Moosebrother_UpdateEmoteInFontString(fontstring, widthOverride, heightOverride)
     local txt = fontstring:GetText()
     if not txt then return end
+    
+    -- WoW 12.0+: Skip secret/protected values to avoid taint errors
+    if issecretvalue(txt) == true then
+        return
+    end
     
     -- Find all Moosebrother emote textures in the text
     for emoteTextureString in txt:gmatch(MOOSEBROTHER_TEXTURE_PATTERN) do
