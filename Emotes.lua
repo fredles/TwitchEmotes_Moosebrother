@@ -84,6 +84,8 @@ TwitchEmotes_Moosebrother_Emoticons = {
     ["poggSpin"] = "poggSpin",
     ["WAGWANMB"] = "WAGWANMB",
     ["mbroWaiting"] = "mbroWaiting",
+    ["mbroWorry"] = "mbroWorry",
+    ["pepoYELL"] = "pepoYELL",
     ["Zara"] = "Zara",
     ["zara"] = "zara",
 }
@@ -174,6 +176,8 @@ TwitchEmotes_Moosebrother_Emoticons_Pack = {
     ["poggSpin"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\poggSpin.tga",
     ["WAGWANMB"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\WAGWANMB.tga:28:28",
     ["mbroWaiting"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroWaiting.tga:28:28",
+    ["mbroWorry"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroWorry.tga:28:28",
+    ["pepoYELL"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\pepoYELL.tga:28:28",
     ["Zara"] = "Interface\\AddOns\\TwitchEmotes\\Emotes\\Custom\\meow.tga",
     ["zara"] = "Interface\\AddOns\\TwitchEmotes\\Emotes\\Custom\\meow.tga",
 }
