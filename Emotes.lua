@@ -1,6 +1,8 @@
 TwitchEmotes_Moosebrother_Emoticons = {
     ["AAAA"] = "AAAA",
     ["HotBois"] = "HotBois",
+    ["lactose"] = "lactose",
+    ["Lactose"] = "Lactose",
     ["glorpDH"] = "glorpDH",
     ["glorpDK"] = "glorpDK",
     ["glorpDR"] = "glorpDR",
@@ -94,6 +96,8 @@ TwitchEmotes_Moosebrother_Emoticons = {
 TwitchEmotes_Moosebrother_Emoticons_Pack = {
     ["AAAA"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\AAAA.tga",
     ["HotBois"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\HotBois.tga",
+    ["lactose"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\lactose.tga",
+    ["Lactose"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\lactose.tga",
     ["glorpDH"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\glorpDH.tga:28:28",
     ["glorpDK"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\glorpDK.tga:28:28",
     ["glorpDR"] = "Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\glorpDR.tga:28:28",
@@ -204,6 +208,7 @@ TwitchEmotes_Moosebrother_Emoticons_Pack = {
 TwitchEmotes_Moosebrother_Animation_Metadata = {
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\AAAA.tga"] = {nFrames = 7, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 256, framerate = 30},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\HotBois.tga"] = {nFrames = 19, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 1024, framerate = 15},
+    ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\lactose.tga"] = {nFrames = 60, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 2048, framerate = 17},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\Joel.tga"] = {nFrames = 36, frameWidth = 96, frameHeight = 32, imageWidth = 128, imageHeight = 2048, framerate = 15},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroChomp.tga"] = {nFrames = 6, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 256, framerate = 15},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroRun.tga"] = {nFrames = 15, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 512, framerate = 15},
