@@ -165,6 +165,96 @@ function TwitchEmotes_Moosebrother_BuildEmoteFrameString(imagepath, animdata, fr
            .. ":0:" .. animdata.frameWidth .. ":" .. top .. ":" .. bottom .. "|t"
 end
 
+-- ============================================================================
+-- ZERO-WIDTH OVERLAY EMOTES (7TV-style)
+-- ============================================================================
+-- Emotes flagged in TwitchEmotes_Moosebrother_ZeroWidth are redrawn centered on
+-- the preceding emote with zero horizontal advance. This runs as a post-step
+-- AFTER the normal animation rewrite, so it works for static and animated emotes
+-- alike and needs no changes to the frame builder. It is idempotent: re-running
+-- it on already-overlaid text produces the same result (width is recomputed from
+-- the height field + the emote's aspect ratio, not from the mutated width field).
+
+-- WoW's |T..|t width field is BOTH render size and pen advance; they can't be
+-- decoupled. So the overlay is drawn at its true display width (width 0 just
+-- collapses it to a sliver) and shifted left to center on the base. The base's
+-- advance stays; the overlay still advances by its own width, leaving a trailing
+-- gap. True zero-advance isn't expressible in this escape.
+
+local zeroWidthPathSet -- lazily built { [texturePath] = true }
+
+local function buildZeroWidthPathSet()
+    zeroWidthPathSet = {}
+    if not (TwitchEmotes_Moosebrother_ZeroWidth and TwitchEmotes_Moosebrother_Emoticons_Pack) then
+        return
+    end
+    for key in pairs(TwitchEmotes_Moosebrother_ZeroWidth) do
+        local pathAndSize = TwitchEmotes_Moosebrother_Emoticons_Pack[key]
+        if pathAndSize then
+            zeroWidthPathSet[pathAndSize:match("(.-%.tga)") or pathAndSize] = true
+        end
+    end
+end
+
+-- Display width (px) of an overlay given its rendered height field and aspect.
+-- Static emotes are square (:28:28); animated ones use frameWidth/frameHeight.
+local function overlayDisplayWidth(path, height)
+    local anim = TwitchEmotes_Moosebrother_Animation_Metadata
+                 and TwitchEmotes_Moosebrother_Animation_Metadata[path]
+    if anim then
+        return math.floor(height * (anim.frameWidth / anim.frameHeight) + 0.5)
+    end
+    return height
+end
+
+--[[
+    Rewrite zero-width overlay emotes in a chat string so they draw on top of
+    the preceding emote. Returns the (possibly unchanged) string.
+    @param txt - the font string text (after normal animation rewrite)
+]]
+function TwitchEmotes_Moosebrother_ApplyZeroWidth(txt)
+    if not zeroWidthPathSet then buildZeroWidthPathSet() end
+    if not next(zeroWidthPathSet) then return txt end
+
+    local out = {}
+    local pos = 1
+    local lastBaseWidth -- rendered width (px) of the most recent non-overlay emote
+    while true do
+        local s, e = txt:find("|T.-|t", pos)
+        if not s then
+            out[#out + 1] = txt:sub(pos)
+            break
+        end
+        local gap = txt:sub(pos, s - 1)
+        local token = txt:sub(s, e)
+        pos = e + 1
+
+        -- Parse |Tpath:H:W[:oX:oY[:texcoord tail...]]|t
+        local body = token:sub(3, -3)
+        local path = body:match("^(.-%.tga)")
+        local afterPath = path and body:sub(#path + 1) or nil
+        local heightStr = afterPath and afterPath:match("^:(%d+)")
+
+        if path and heightStr and zeroWidthPathSet[path] and lastBaseWidth then
+            local height = tonumber(heightStr)
+            local ownW = overlayDisplayWidth(path, height)
+            local offsetX = -math.floor((lastBaseWidth + ownW) / 2 + 0.5)
+            -- Preserve any texcoord tail (present on animated emotes) after :H:W:oX:oY
+            local tail = afterPath:match("^:%d+:%d+:%-?%d+:%-?%d+(:.*)$") or ""
+            out[#out + 1] = gap:gsub("%s+", "", 1) -- drop the separator so it overlaps
+            out[#out + 1] = "|T" .. path .. ":" .. height .. ":" .. ownW
+                            .. ":" .. offsetX .. ":0" .. tail .. "|t"
+            -- overlay does not advance the pen, so it is not the new base
+        else
+            out[#out + 1] = gap
+            out[#out + 1] = token
+            local w = afterPath and afterPath:match("^:%d+:(%d+)")
+            if w then lastBaseWidth = tonumber(w) end
+        end
+    end
+    return table.concat(out)
+end
+
 --[[
     Update animated emotes within a font string (chat message line)
     Finds all Moosebrother emote textures and updates their texture coordinates
@@ -223,6 +313,15 @@ function TwitchEmotes_Moosebrother_UpdateEmoteInFontString(fontstring, widthOver
                 txt = newTxt
             end
         end
+    end
+
+    -- Post-step: lay out zero-width overlay emotes on top of their base emote.
+    local overlaid = TwitchEmotes_Moosebrother_ApplyZeroWidth(txt)
+    if overlaid ~= txt then
+        if fontstring.messageInfo then
+            fontstring.messageInfo.message = overlaid
+        end
+        fontstring:SetText(overlaid)
     end
 end
 
