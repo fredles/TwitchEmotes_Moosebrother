@@ -1,12 +1,3 @@
--- Zero-width overlay emotes (7TV-style). Keys listed here render centered on
--- top of the emote immediately before them, with zero horizontal advance, so
--- you can stack them: e.g. typing "mbroA mbroHat" draws the hat over mbroA.
--- Works for both static and animated emotes. The emote must ALSO be registered
--- normally in the two Emoticons* tables below (and Animation_Metadata if animated).
-TwitchEmotes_Moosebrother_ZeroWidth = {
-    ["kermitGape00"] = true,
-}
-
 TwitchEmotes_Moosebrother_Emoticons = {
     ["AAAA"] = "AAAA",
     ["HotBois"] = "HotBois",
@@ -216,7 +207,7 @@ TwitchEmotes_Moosebrother_Animation_Metadata = {
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\AAAA.tga"] = {nFrames = 7, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 256, framerate = 30},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\HotBois.tga"] = {nFrames = 19, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 1024, framerate = 15},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\Joel.tga"] = {nFrames = 36, frameWidth = 96, frameHeight = 32, imageWidth = 128, imageHeight = 2048, framerate = 15},
-    -- Single-frame (static) 3:1 emote; metadata carries the aspect so it renders un-squished and centers correctly as a zero-width overlay.
+    -- Single-frame (static) 3:1 emote; metadata carries the aspect so it renders un-squished.
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\kermitGape00.tga"] = {nFrames = 1, frameWidth = 96, frameHeight = 32, imageWidth = 128, imageHeight = 32, framerate = 1},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroChomp.tga"] = {nFrames = 6, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 256, framerate = 15},
     ["Interface\\AddOns\\TwitchEmotes_Moosebrother\\emotes\\mbroRun.tga"] = {nFrames = 15, frameWidth = 32, frameHeight = 32, imageWidth = 32, imageHeight = 512, framerate = 15},
